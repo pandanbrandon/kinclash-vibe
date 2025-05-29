@@ -25,11 +25,11 @@ const BurgerMenu = ({ onRestart, onMainMenu }: BurgerMenuProps) => {
   }, []);
 
   return (
-    <div className="absolute top-4 right-4" ref={menuRef}>
+    <div className="relative" ref={menuRef}>
       {/* Burger Icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
       >
         <div className="w-6 h-5 flex flex-col justify-between">
           <div className="w-full h-0.5 bg-gray-800 rounded-full"></div>
@@ -40,7 +40,7 @@ const BurgerMenu = ({ onRestart, onMainMenu }: BurgerMenuProps) => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-12 right-0 bg-white rounded-lg shadow-xl py-2 w-48">
+        <div className="absolute top-full right-0 mt-1 bg-white rounded-lg shadow-xl py-2 w-48 z-50">
           <button
             onClick={() => {
               onRestart();

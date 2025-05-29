@@ -44,18 +44,30 @@ const Game = ({ onReturnToMenu }: GameProps) => {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gray-100 relative">
-      <BurgerMenu onRestart={handleRestart} onMainMenu={onReturnToMenu} />
-      <h1 className="text-4xl font-bold mb-8 text-gray-800">KinClash (Λeris)</h1>
-      <GameBoard revealedAnswers={revealedAnswers} strikes={strikes} />
-      <AnswerInput onSubmit={handleAnswer} />
-      {strikes === 3 && (
-        <GameOverModal
-          onRestart={handleRestart}
-          onMainMenu={onReturnToMenu}
-        />
-      )}
-    </main>
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      {/* Header Bar */}
+      <header className="w-full bg-white shadow-md px-4 py-3 flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-gray-800">KinClash (Λeris)</h1>
+        <BurgerMenu onRestart={handleRestart} onMainMenu={onReturnToMenu} />
+      </header>
+      
+      {/* Question Prompt */}
+      <div className="w-full bg-blue-50 border-b border-blue-100 px-4 py-3 text-center">
+        <h2 className="text-xl text-blue-800 font-medium">What fruit do people like to eat?</h2>
+      </div>
+      
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-center justify-center p-4">
+        <GameBoard revealedAnswers={revealedAnswers} strikes={strikes} />
+        <AnswerInput onSubmit={handleAnswer} />
+        {strikes === 3 && (
+          <GameOverModal
+            onRestart={handleRestart}
+            onMainMenu={onReturnToMenu}
+          />
+        )}
+      </main>
+    </div>
   );
 };
 
